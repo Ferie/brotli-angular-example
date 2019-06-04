@@ -1,0 +1,31 @@
+# Editor configuration, see http://editorconfig.org
+
+root = true
+
+# Matches everything
+# - Set default charset
+# - Unix-style newlines
+# - 4 space indentation
+# - Tab indentation style
+# - New line at the end of the file
+# - Trim withespaces at the end of the line
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Matches Markup files
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+# Matches the exact file `index.html`
+[index.html]
+insert_final_newline = false
+
+# Matches the style files
+[*.{css,scss}]
+insert_final_newline = false
