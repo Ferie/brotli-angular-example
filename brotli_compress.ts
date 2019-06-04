@@ -1,6 +1,3 @@
-// const fs = require('fs');
-// const compress = require('brotli/compress');
-
 import { readdirSync, readFileSync, writeFileSync } from 'fs';
 import { compress } from 'brotli';
 
@@ -12,13 +9,6 @@ const brotliSettings = {
     lgwin: 12, // default
     threshold: 10240
 };
-
-// fs.readdirSync('dist/').forEach(file => {
-//     if (file.endsWith('.js') || file.endsWith('.css') || file.endsWith('.html')) {
-//         const result = brotli.compress(fs.readFileSync('dist/' + file), brotliSettings);
-//         fs.writeFileSync('dist/' + file + '.br', result);
-//     }
-// });
 
 readdirSync('dist/').forEach(file => {
     if (file.endsWith('.js') || file.endsWith('.css') || file.endsWith('.html')) {
