@@ -10,7 +10,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "compress": "ts-node compress.ts",
+        "compress": "ts-node brotli_compress.ts",
         "build_prod_and_compress": "npm run build_prod && npm run compress"
     },
     "private": true,
