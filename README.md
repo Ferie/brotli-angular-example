@@ -12,6 +12,8 @@ To easily check if the compression is working, just check the "Content-Encoding"
 
 ![Content-Encoding from the Response Headers](/src/assets/Content-Encoding_screenshot.png)
 
+**NOTE**: At the time this is written, the platform I am using to deploy, Netlify, does not support the Brotli compression backend side but they are working on this issue as described [here](https://github.com/netlify/ask-netlify/issues/24). For this reason I will continue to keep the deployment as valid even if it is not supported as when it will be it will be easier to check the working project directly online. In the meantime you can dowload/clone this project and check the the Brotli compression on your local machines.
+
 ---
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
