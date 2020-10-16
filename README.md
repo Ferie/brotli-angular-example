@@ -6,13 +6,37 @@ This Angular project is a demostration of how to integrate the Brotli compressio
 
 The node server has been integrated with [`express-static-gzip`](https://www.npmjs.com/package/express-static-gzip). This module is a middleware that automatically checks the available encoded headers supported by the browsers and eventually serve the Brotli files. The fallback is the gzip file compression. As the developers of this plugin said, "it supports any other compression as well".
 
-The Brotli compression has been done using [`brotli`](https://www.npmjs.com/package/brotli) node module. The file `brotli_compress.ts` is run after the production build. If needed, this compression can be run also after an SSR build.
+The Brotli compression has been done using [`brotli`](https://www.npmjs.com/package/brotli) node module.
+
+The compression has to happen after the Angular-CLI production build (`ng build --prod`): in this example, all the compression configuration is set in the file `brotli_compress.ts` that is run after the build on production. To run everything together a new script has been added to the `package.json`:
+
+```JSON
+{
+    ...
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "build_prod": "ng build --prod",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "compress": "ts-node brotli_compress.ts",
+        "build_prod_and_compress": "npm run build_prod && npm run compress"
+    },
+    ...
+}
+```
+
+If needed, this compression can be run also after an Server Side Render (SSR) build.
 
 To easily check if the compression is working, just check the "Content-Encoding" from the "Response Headers" in the "Network" tab in the inspector from the browsers.
 
 ![Content-Encoding from the Response Headers](/src/assets/Content-Encoding_screenshot.png)
 
-**NOTE**: At the time this is written, the platform I am using to deploy, Netlify, does not support the Brotli compression backend side but they are working on this issue as described [here](https://github.com/netlify/ask-netlify/issues/24). For this reason I will continue to keep the deployment as valid even if it is not supported as when it will be it will be easier to check the working project directly online. In the meantime you can dowload/clone this project and check the the Brotli compression on your local machines.
+~~**NOTE**: At the time this is written, the platform I am using to deploy, Netlify, does not support the Brotli compression backend side but they are working on this issue as described [here](https://github.com/netlify/ask-netlify/issues/24). For this reason I will continue to keep the deployment as valid even if it is not supported as when it will be it will be easier to check the working project directly online. In the meantime you can dowload/clone this project and check the the Brotli compression on your local machines.~~
+
+You can now check the compression on the [deployed website](https://github.com/Ferie/brotli-angular-example).
 
 ---
 
